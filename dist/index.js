@@ -77,7 +77,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(0, 0, 2);
+camera.position.set(0, 0, 10);
 scene.add(camera);
 
 // Controls
@@ -96,7 +96,7 @@ function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
   bagel.rotateX(0.01)
-  camera.position.z -= 0.001
+  camera.position.z -= 0.005
 }
 
 animate();

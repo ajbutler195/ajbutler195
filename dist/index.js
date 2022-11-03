@@ -96,6 +96,7 @@ function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
   bagel.rotateX(0.01)
+  camera.position.z -= 0.001
 }
 
 animate();

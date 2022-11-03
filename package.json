@@ -1,0 +1,23 @@
+{
+  "name": "ajbutler195",
+  "version": "1.0.0",
+  "description": "<!--\r **ajbutler195/ajbutler195** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajbutler195/ajbutler195.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajbutler195/ajbutler195/issues"
+  },
+  "homepage": "https://github.com/ajbutler195/ajbutler195#readme",
+  "dependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}

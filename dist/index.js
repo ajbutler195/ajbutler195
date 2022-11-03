@@ -4,13 +4,18 @@ import { GLTFLoader }  from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples
 
 const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xFFFFFF);
+scene.background = new THREE.Color(0x111111);
 const gltfLoader = new GLTFLoader();
+var bagel;
 gltfLoader.load("assets/everything.glb", function(glb) {
     console.log(glb)
-    const root = glb.scene
-    scene.add(root)
-})
+    bagel = glb.scene
+    bagel.scale.set(15, 15, 15);
+    bagel.position.set(0, 0, 0)
+    bagel.rotation.y = (3 * Math.PI) / 2;
+
+    scene.add(bagel)
+});
 
 // Object
 // const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -18,13 +23,32 @@ gltfLoader.load("assets/everything.glb", function(glb) {
 // const mesh = new THREE.Mesh(geometry, material);
 // scene.add(mesh);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
-directionalLight.position.set(20, 20, 10);
-scene.add(directionalLight);
+// const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+// directionalLight.position.set(20, 20, 10);
+// scene.add(directionalLight);
 
-const directionalLight2 = new THREE.DirectionalLight(0xffffff, .5);
-directionalLight2.position.set(-10, -10, -20);
+// const directionalLight2 = new THREE.DirectionalLight(0xffffff, .5);
+// directionalLight2.position.set(-10, -10, -20);
+// scene.add(directionalLight2);
+
+const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 10);
+directionalLight.position.set(0, 0, -5);
+directionalLight.target.position.set(0, 0, 0);
+scene.add(directionalLight);
+scene.add(directionalLight.target);
+
+const spotLight = new THREE.SpotLight(0xffffff, 10);
+spotLight.position.set(0, 0, -5);
+spotLight.target.position.set(0, 0, 0);
+scene.add(spotLight);
+scene.add(spotLight.target);
+
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, 3);
+directionalLight2.position.set(0, 0, 10);
+directionalLight2.target.position.set(0, 0, 0);
 scene.add(directionalLight2);
+scene.add(directionalLight2.target);
+
 
 
 
@@ -53,7 +77,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(0, 1, 2);
+camera.position.set(0, 0, 2);
 scene.add(camera);
 
 // Controls
@@ -71,6 +95,7 @@ renderer.shadowMap.enabled = true;
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
+  bagel.rotateX(0.01)
 }
 
 animate();
